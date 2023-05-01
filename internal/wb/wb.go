@@ -4,6 +4,7 @@ package wb
 import (
    
    "log" 
+   "fmt"
    "strings"	 
    "strconv"
    "net/http"
@@ -32,17 +33,19 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
    
    } else {
 	   
-	   paramsURI := r.URL.RequestURI()
+	   paramsURI := strings.Split(r.URL.RequestURI(),"/")
 	   
 	   checkIncomingParams:
 	   
-	   for i, v := range strings.Split(paramsURI,"/"){
+	   for i, v := range paramsURI {
 		   switch i {
 		        case 20:
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
 			   http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
 			   break checkIncomingParams
 			case 3:
+			   
+			   fmt.Println(len(paramsURI))
 			   if len(v) == 0 {
 			   // При попытке передать запрос без имени метрики возвращать http.StatusNotFound.
 			   http.Error(w, "mertic name is empty", http.StatusNotFound)
@@ -54,7 +57,8 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		           http.Error(w, "mertic value is incorrect", http.StatusBadRequest) 
 		           break checkIncomingParams
 			 }
-		       // default:
+		        default:
+			   fmt.Println(len(paramsURI))
 			//   w.WriteHeader(http.StatusOK)
 	                //   w.Header().Set("Content-Type", "text/plain")
 		   }	   
