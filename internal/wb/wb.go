@@ -4,8 +4,7 @@ package wb
 import (
    
    "log" 
-   "net/http"
-   "net/url" 	
+   "net/http" 	
 )
 
 /*
