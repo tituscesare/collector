@@ -2,7 +2,7 @@ package main
 
 import (
   
-    "internal/rq"
+    "collector/internal/rq"
 )
 
 func main() {
