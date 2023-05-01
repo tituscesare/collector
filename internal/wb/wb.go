@@ -4,7 +4,8 @@ package wb
 import (
    
    "log" 
-   "net/http" 	
+   "strings"	
+   "net/http"
 )
 
 /*
@@ -23,7 +24,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
    
    } else {
 	   
- tp := r.URL.RequestURI()
+	   tp := r.URL.RequestURI().Split('/')[1]
    /*
      tp := r.URL // param type
      
