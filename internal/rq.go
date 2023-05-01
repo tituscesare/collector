@@ -14,7 +14,20 @@ type memStorage struct (
 
 
 func updateCounter(w http.ResponseWriter, r *http.Request){
-  
+      
+     params := mux.Vars(r)
+     
+     paramType  := params["type"]
+     paramName  := params["name"]
+     paramValue := params["value"]
+     
+     
+     // При успешном приёме возвращать http.StatusOK.
+
+     // При попытке передать запрос без имени метрики возвращать http.StatusNotFound.
+
+     //При попытке передать запрос с некорректным типом метрики или значением возвращать http.StatusBadRequest.
+
     
 }
 
