@@ -2,7 +2,7 @@ package main
 
 import (
   
-    "collector/internal/web"
+    "internal/web"
 )
 
 func main() {
