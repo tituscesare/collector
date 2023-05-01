@@ -39,7 +39,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		   switch i {
 			   
 		        case 2:
-			 if v != "counter" || v != "gauge" {
+			   if (v != "counter") && (v != "gauge") {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
 			   http.Error(w, "mertic type is counter incorrect", http.StatusBadRequest)
 			   return
