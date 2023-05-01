@@ -39,8 +39,16 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
               return
 	   }
 	   
+	   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest. 
+      
+      if metricType == "" {
+         
+         http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
+         
+         return
+      }
 	   // При попытке передать запрос без имени метрики возвращать http.StatusNotFound.
-           if metricName == nil {
+           if metricName == "" {
          
             http.Error(w, "mertic name is empty", http.StatusNotFound)
          
@@ -52,27 +60,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
          http.Error(w, "mertic value is incorrect", http.StatusBadRequest)
          
          return
-      }
-	   
-   /*
-     tp := r.URL // param type
-     
-      // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest. 
-      
-      if err != nil {
-         
-         http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
-         
-         return
-      }
-      
-      nm, err := r.URL.Query().Get("nm") // param name
-      
-      
-      
-     vl, err := r.URL.Query().Get("vl") // param value
-     
-      
+	}
       
      // При успешном приёме возвращать http.StatusOK.
      */ 
