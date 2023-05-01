@@ -65,7 +65,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
       	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/plain")
 
-	fmt.Fprintf(w, string(strings.Split(paramUrl,"/"))) 
+	   fmt.Fprintf(w, strings.Split(paramUrl,"/")[1])) 
          
    }     
 }
