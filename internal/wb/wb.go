@@ -4,7 +4,7 @@ package wb
 import (
    
    "log" 
-   //"fmt"
+   "fmt"
    "strings"	 
    "strconv"
    "net/http"
@@ -53,6 +53,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 			  }
 		        case 4:
 			  
+			   fmt.Println(v) 
 			  if v == "gauge" {
 			   if _, err := strconv.ParseFloat(v, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
