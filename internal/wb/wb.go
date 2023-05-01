@@ -61,7 +61,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 			  }
 			 }
 			if v == "counter" {
-			   if _, err := strconv.ParseInt(v, 64); err != nil {
+			   if _, err := strconv.ParseInt(v, 10, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
 		           http.Error(w, "mertic value is incorrect", http.StatusBadRequest) 
 		           break checkIncomingParams
