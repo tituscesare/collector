@@ -2,11 +2,10 @@ package main
 
 import (
   
-    "internal/incoming"
-    "net/http"
+    "internal/rq"
 )
 
 func main() {
 
-  
+    rq.HandleRequests()
 }
