@@ -2,10 +2,10 @@ package main
 
 import (
   
-    "collector/internal/rq"
+    "collector/internal/web"
 )
 
 func main() {
 
-    rq.HandleRequests()
+    web.HandleRequests()
 }
