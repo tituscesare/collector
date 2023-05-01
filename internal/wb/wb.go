@@ -7,7 +7,9 @@ import (
    "strings"	 
    "fmt"	
    //"strconv"
+   "reflect"	
    "net/http"
+	
 )
 
 /*
@@ -40,9 +42,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
               return
 	   }
 	   
-	   fmt.Fprintf(w, metricType)
-	   fmt.Fprintf(w, metricName)
-	   fmt.Fprintf(w, metricValue)
+	   fmt.Fprintf(w, reflect.TypeOf(metricType))
+	   fmt.Fprintf(w, reflect.TypeOf(metricName))
+	   fmt.Fprintf(w, reflect.TypeOf(metricValue))
 	   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest. 
       
       if metricType == " " {
