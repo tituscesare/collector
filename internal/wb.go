@@ -1,5 +1,0 @@
-package wb
-
-
-
-func main(){}
