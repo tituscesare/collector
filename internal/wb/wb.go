@@ -23,7 +23,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
    
    } else {
 	   
-	   tp := r.URL.Query()
+	  // tp := r.URL.Query()
    /*
      tp := r.URL // param type
      
