@@ -7,7 +7,7 @@ import (
    "strings"	 
   // "fmt"	
    "strconv"
-   "reflect"	
+   //"reflect"	
    "net/http"
 	
 )
@@ -51,7 +51,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 			   http.Error(w, "mertic name is empty", http.StatusNotFound)
 			   return
 		        case 4:
-			   if s, err := strconv.ParseFloat(v, 64); err != nil {
+			   if _, err := strconv.ParseFloat(v, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
 			   http.Error(w, "mertic value is incorrect", http.StatusBadRequest)  
 			   return
