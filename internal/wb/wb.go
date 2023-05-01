@@ -41,7 +41,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		   switch i {
 		        case 2:
 			   
-			 if v == "counter" {
+			 if v != "counter" {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
 			   http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
 			   break checkIncomingParams
@@ -53,20 +53,16 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 			   break checkIncomingParams
 			  }
 		        case 4:
-			  if v == "gauge" {
 			   if _, err := strconv.ParseFloat(v, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
 		           http.Error(w, "mertic value is incorrect", http.StatusBadRequest) 
 		           break checkIncomingParams
 			  }
-			 }
-			if v == "counter" {
 			   if _, err := strconv.ParseInt(v, 10, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
 		           http.Error(w, "mertic value is incorrect", http.StatusBadRequest) 
 		           break checkIncomingParams
 			  }
-			 }
 		      //  default:
 			//   w.WriteHeader(http.StatusOK)
 	              //     w.Header().Set("Content-Type", "text/plain")
