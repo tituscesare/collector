@@ -34,7 +34,6 @@ func updateMetrics(w http.ResponseWriter, r *http.Request){
 		        case 2:
 			   if (v != "counter") && (v != "gauge") {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
-			   //http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
 		           w.WriteHeader(http.StatusBadRequest)
 		           return
 			 }
@@ -52,9 +51,12 @@ func updateMetrics(w http.ResponseWriter, r *http.Request){
 			  }
 			   if _, err := strconv.ParseInt(v, 10, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
-		           http.Error(w, "mertic value is incorrect", http.StatusBadRequest) 
+		           w.WriteHeader(http.StatusBadRequest) 
 		           return
 			  }
+			  default:
+			   w.Header().Set("content-Type", "text/plain")
+			   w.WriteHeader(http.StatusOK)
 		   }	   
 		 }
              }     
