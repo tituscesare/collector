@@ -17,6 +17,12 @@ type memStorage struct (
 
 func updateCounter(w http.ResponseWriter, r *http.Request){
      
+   if r.Method != http.MethodPost {
+      
+      return
+   
+   } else {
+   
      tp, err := r.URL.Query().Get("tp") // param type
      nm, err := r.URL.Query().Get("nm") // param name
      vl,err  := r.URL.Query().Get("vl") // param value
@@ -27,8 +33,8 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
      // При попытке передать запрос без имени метрики возвращать http.StatusNotFound.
 
      //При попытке передать запрос с некорректным типом метрики или значением возвращать http.StatusBadRequest.
-
-    
+ 
+   }     
 }
 
 func HandleRequests() {
