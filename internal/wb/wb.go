@@ -22,6 +22,8 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
       return
    
    } else {
+	   
+	   tp := r.URL()
    /*
      tp := r.URL // param type
      
@@ -58,7 +60,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
      */ 
       	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/plain")
-	w.Header().Set("Params", r.URL)   
+	w.Header().Set("Params", tp)   
          
    }     
 }
