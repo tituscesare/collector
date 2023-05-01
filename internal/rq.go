@@ -17,9 +17,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
       
      params := mux.Vars(r)
      
-     paramType  := params["type"]
-     paramName  := params["name"]
-     paramValue := params["value"]
+     paramType  := params["tp"] // param type
+     paramName  := params["nm"] // param name
+     paramValue := params["vl"] // param value
      
      
      // При успешном приёме возвращать http.StatusOK.
@@ -34,7 +34,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 func HandleRequests() {
 
     mux := http.NewServeMux()
-    mux.HandleFunc('/update/{type}/{name}/{value}', updateCounter).Methods("POST")
+    mux.HandleFunc('/update/{tp}/{nm}/{vl}', updateCounter).Methods("POST")
     
     log.Fatal(http.ListenAndServe(":8080", mux))
 }
