@@ -3,8 +3,7 @@ package rq
 
 import (
    
-   "log"
-   "strconv"  
+   "log" 
    "net/http"
 )
 
@@ -56,6 +55,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
       }
       
      // При успешном приёме возвращать http.StatusOK.
+      
+      	w.WriteHeader(http.StatusOK)
+	      w.Header().Set("Content-Type", "text/plain")
  
    }     
 }
