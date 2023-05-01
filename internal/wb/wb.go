@@ -5,7 +5,7 @@ import (
    
    "log" 
    "strings"	 
-   "fmt"	
+  // "fmt"	
    "strconv"
    "reflect"	
    "net/http"
@@ -36,11 +36,11 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 	   
 	   paramsURI := r.URL.RequestURI()
 
-	   metricType  := strings.Split(paramUrl,"/")[2] // тип метрики      -- только строка
-	   metricName  := strings.Split(paramUrl,"/")[3] // название метрики -- только строка
-	   metricValue := strings.Split(paramUrl,"/")[4] // значение метрики -- только не строка 
+	  // metricType  := strings.Split(paramUrl,"/")[2] // тип метрики      -- только строка
+	 //  metricName  := strings.Split(paramUrl,"/")[3] // название метрики -- только строка
+	  // metricValue := strings.Split(paramUrl,"/")[4] // значение метрики -- только не строка 
 	   
-	   for i, v := range strings.Split(paramUrl,"/"){
+	   for i, v := range strings.Split(paramsURI,"/"){
 		   switch i {
 		        case 2:
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
