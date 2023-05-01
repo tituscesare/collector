@@ -27,6 +27,13 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 	   
 	   paramUrl := r.URL.RequestURI()
 	   
+	   serviceName := strings.Split(paramUrl,"/")[1]
+	   
+	   if serviceName != 'update' {
+		
+              http.Error(w, "service not found", http.StatusNotFound)
+              return
+	   }
 	   
    /*
      tp := r.URL // param type
@@ -64,8 +71,6 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
      */ 
       	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/plain")
-
-	   fmt.Fprintf(w, strings.Split(paramUrl,"/")[2]) 
          
    }     
 }
