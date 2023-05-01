@@ -4,7 +4,8 @@ package wb
 import (
    
    "log" 
-   "strings"	
+   "strings"	 
+   "fmt"	
    //"strconv"
    "net/http"
 )
@@ -39,6 +40,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
               return
 	   }
 	   
+	   fmt.Fprintf(w, metricType)
+	   fmt.Fprintf(w, metricName)
+	   fmt.Fprintf(w, metricValue)
 	   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest. 
       
       if metricType == " " {
