@@ -12,6 +12,12 @@ import (
 	
 )
 
+//Тип gauge, float64 — новое значение должно замещать предыдущее.
+type gauge float64
+
+//Тип counter, int64 — новое значение должно добавляться к предыдущему, если какое-то значение уже было известно серверу.
+type counter int64
+
 /*
 type memStorage struct {
   
@@ -32,9 +38,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 	  
 	   serviceName := strings.Split(paramUrl,"/")[1] // имя сервиса
 	   
-	   metricType  := strings.Split(paramUrl,"/")[2] // тип метрики
-	   metricName  := strings.Split(paramUrl,"/")[3] // название метрики
-	   metricValue := strings.Split(paramUrl,"/")[4] // значение метрики
+	   metricType  := strings.Split(paramUrl,"/")[2] // тип метрики      -- только строка
+	   metricName  := strings.Split(paramUrl,"/")[3] // название метрики -- только строка
+	   metricValue := strings.Split(paramUrl,"/")[4] // значение метрики -- только не строка 
 	   
 	   if serviceName != "update" {
 		
