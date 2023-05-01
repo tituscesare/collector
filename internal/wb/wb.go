@@ -28,7 +28,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 	   
 	   serviceName := strings.Split(paramUrl,"/")[1]
 	   
-	   if serviceName != 'update' {
+	   if serviceName != "update" {
 		
               http.Error(w, "service not found", http.StatusNotFound)
               return
