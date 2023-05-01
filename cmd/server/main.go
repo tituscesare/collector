@@ -2,7 +2,7 @@ package main
 
 import (
   
-    "github.com/collector/internal/rq"
+    "github.com/tituscesare/collector/internal/rq"
 )
 
 func main() {
