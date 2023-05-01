@@ -69,7 +69,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 func HandleRequests() {
 
     mux := http.NewServeMux()
-    mux.HandleFunc("/update", updateCounter)
+    mux.HandleFunc("/", updateCounter)
     
     log.Fatal(http.ListenAndServe(":8080", mux))
 }
