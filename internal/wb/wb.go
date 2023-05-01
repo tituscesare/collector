@@ -49,13 +49,12 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		        case 4:
 			   if _, err := strconv.ParseFloat(v, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
-			   w.WriteHeader(http.StatusBadRequest)
-		           w.Header().Set("Content-Type", "text/plain")		   
+		           http.Error(w, "mertic value is incorrect", http.StatusBadRequest)
 			   break checkIncomingParams
 			  }
-		        default:
-			   w.WriteHeader(http.StatusOK)
-	                   w.Header().Set("Content-Type", "text/plain")
+		       // default:
+			//   w.WriteHeader(http.StatusOK)
+	                //   w.Header().Set("Content-Type", "text/plain")
 		   }	   
 		 }
              }     
