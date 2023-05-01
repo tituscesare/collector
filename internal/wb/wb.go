@@ -22,8 +22,8 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
       return
    
    } else {
-   
-     tp, err := r.URL.Query().Get("tp") // param type
+   /*
+     tp := r.URL // param type
      
       // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest. 
       
@@ -55,10 +55,10 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
       }
       
      // При успешном приёме возвращать http.StatusOK.
-      
+     */ 
       	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/plain")
- 
+         
    }     
 }
 
