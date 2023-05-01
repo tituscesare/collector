@@ -2,7 +2,9 @@ package rq
 
 
 import (
-     
+   
+   "log"
+   "strconv"  
    "net/http"
 )
 
@@ -14,12 +16,10 @@ type memStorage struct (
 
 
 func updateCounter(w http.ResponseWriter, r *http.Request){
-      
-     params := mux.Vars(r)
      
-     paramType  := params["tp"] // param type
-     paramName  := params["nm"] // param name
-     paramValue := params["vl"] // param value
+     tp, err := r.URL.Query().Get("tp") // param type
+     nm, err := r.URL.Query().Get("nm") // param name
+     vl,err  := r.URL.Query().Get("vl") // param value
      
      
      // При успешном приёме возвращать http.StatusOK.
@@ -34,7 +34,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 func HandleRequests() {
 
     mux := http.NewServeMux()
-    mux.HandleFunc('/update/{tp}/{nm}/{vl}', updateCounter).Methods("POST")
+    mux.HandleFunc('/update/{tp}/{nm}/{vl}', updateCounter)
     
     log.Fatal(http.ListenAndServe(":8080", mux))
 }
