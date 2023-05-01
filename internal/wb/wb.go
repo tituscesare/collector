@@ -11,20 +11,13 @@ import (
 	
 )
 
-//Тип gauge, float64 — новое значение должно замещать предыдущее.
-type gauge float64
-
-//Тип counter, int64 — новое значение должно добавляться к предыдущему, если какое-то значение уже было известно серверу.
-type counter int64
-
-/*
-type memStorage struct {
-  
-     store map[string][int64],
+type MemStorage struct {
+     gauge map[string]float64  //Тип gauge, float64 — новое значение должно замещать предыдущее.
+     counter map[string]int64  //Тип counter, int64 — новое значение должно добавляться к предыдущему, если какое-то значение уже было известно серверу.
 }
-*/
 
-func updateCounter(w http.ResponseWriter, r *http.Request){
+
+func updateMetrics(w http.ResponseWriter, r *http.Request){
      
    if r.Method != http.MethodPost {
       
@@ -41,8 +34,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		        case 2:
 			   if (v != "counter") && (v != "gauge") {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
-			   http.Error(w, "mertic type is counter incorrect", http.StatusBadRequest)
-			   return
+			   //http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
+		           w.WriteHeader(http.StatusBadRequest)
+		           return
 			 }
 			   
 			case 3:
@@ -69,7 +63,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 func HandleRequests() {
 
     mux := http.NewServeMux()
-    mux.HandleFunc("/", updateCounter)
+    mux.HandleFunc("/", updateMetrics)
     
     log.Fatal(http.ListenAndServe(":8080", mux))
 }
