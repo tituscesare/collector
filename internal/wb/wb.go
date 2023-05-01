@@ -10,7 +10,7 @@ import (
 
 type memStorage struct {
   
-     store map[string][int64]
+     store map[string][int64],
 }
 
 
@@ -57,7 +57,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
      // При успешном приёме возвращать http.StatusOK.
       
       	w.WriteHeader(http.StatusOK)
-	      w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Content-Type", "text/plain")
  
    }     
 }
