@@ -44,7 +44,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 			 if v != "counter" {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
 			   http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
-			   w.WriteHeader(http.StatusBadRequest)	 
+			   break checkIncomingParams
 			 }
 			 if v != "gauge" {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
@@ -69,8 +69,8 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		           break checkIncomingParams
 			  }
 		        default:
-			   w.WriteHeader(http.StatusOK)
-	                   w.Header().Set("Content-Type", "text/plain")
+			//   w.WriteHeader(http.StatusOK)
+	                //   w.Header().Set("Content-Type", "text/plain")
 		   }	   
 		 }
              }     
