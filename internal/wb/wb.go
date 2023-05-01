@@ -45,16 +45,16 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 		        case 2:
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
 			   http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
-			   return
+			   break
 			case 3:
 			   // При попытке передать запрос без имени метрики возвращать http.StatusNotFound.
 			   http.Error(w, "mertic name is empty", http.StatusNotFound)
-			   return
+			   break
 		        case 4:
 			   if _, err := strconv.ParseFloat(v, 64); err != nil {
 			   // При попытке передать запрос с некорректным значением возвращать http.StatusBadRequest. 
 			   http.Error(w, "mertic value is incorrect", http.StatusBadRequest)  
-			   return
+			   break
 			  }
 		        default:
 			   w.WriteHeader(http.StatusOK)
