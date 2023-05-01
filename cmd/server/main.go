@@ -2,7 +2,7 @@ package main
 
 import (
   
-    "collector/internal/wb"
+    "github.com/tituscesare/collector/internal/wb"
 )
 
 func main() {
