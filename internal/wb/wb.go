@@ -58,6 +58,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
      */ 
       	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/plain")
+	w.Header().Set("Params", r.URL)   
          
    }     
 }
@@ -65,7 +66,7 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 func HandleRequests() {
 
     mux := http.NewServeMux()
-    mux.HandleFunc("/update/{tp}/", updateCounter)
+    mux.HandleFunc("/update/", updateCounter)
     
     log.Fatal(http.ListenAndServe(":8080", mux))
 }
