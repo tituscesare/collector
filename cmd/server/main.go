@@ -1,12 +1,3 @@
 package main
 
-import (
-  
-    "internal/incoming"
-    "net/http"
-)
-
-func main() {
-
-  
-}
+func main() {}
