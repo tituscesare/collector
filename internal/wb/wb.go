@@ -39,7 +39,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
 	   
 	   for i, v := range paramsURI {
 		   switch i {
-		        case 20:
+		        case 2:
+			   
+			   fmt.Println(v) 
 			   if v != "counter" || v != "gauge" {
 			   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest.
 			   http.Error(w, "mertic type is incorrect", http.StatusBadRequest)
