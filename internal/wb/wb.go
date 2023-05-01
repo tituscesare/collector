@@ -42,9 +42,9 @@ func updateCounter(w http.ResponseWriter, r *http.Request){
               return
 	   }
 	   
-	   fmt.Fprintf(w, reflect.TypeOf(metricType))
-	   fmt.Fprintf(w, reflect.TypeOf(metricName))
-	   fmt.Fprintf(w, reflect.TypeOf(metricValue))
+	   fmt.Fprintf(w, string(reflect.TypeOf(metricType)))
+	  //fmt.Fprintf(w, reflect.TypeOf(metricName))
+	  // fmt.Fprintf(w, reflect.TypeOf(metricValue))
 	   // При попытке передать запрос с некорректным типом метрики возвращать http.StatusBadRequest. 
       
       if metricType == " " {
