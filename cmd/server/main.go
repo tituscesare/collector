@@ -2,10 +2,10 @@ package main
 
 import (
   
-    "internal/web"
+    "collector/internal/wb"
 )
 
 func main() {
 
-    web.HandleRequests()
+    wb.HandleRequests()
 }
